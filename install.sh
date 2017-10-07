@@ -42,3 +42,8 @@ sudo chown tomcat8 /etc/fuseki/
 #
 #	Configuring Fuseki
 #
+# create a "relatives" DB via the web UI, select persistent storage
+# DB is set to /etc/fuseki/databases/relatives
+# DB config is set to /etc/fuseki/configuration/relatives.ttl -- relatives-default.ttl in this repo
+# load the relatives.ttl file via web UI
+#	SELECT shows 25 triples
