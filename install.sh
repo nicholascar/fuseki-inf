@@ -1,5 +1,6 @@
 # server update
 sudo apt update
+sudo apt upgrade
 sudo timedatectl set-timezone Australia/Brisbane
 
 # Jena/Fuseki
@@ -9,8 +10,10 @@ sudo apt install -y tomcat8 tomcat8-admin
 sudo /sbin/iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
 sudo /sbin/iptables -A INPUT -i eth0 -p tcp --dport 8080 -j ACCEPT
 sudo /sbin/iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
-nano sudo nano /var/lib/tomcat8/conf/tomcat-users.xml
-# add in         <user username="admin" password="{TOMCAT_ADMIN_PWD}" roles="manager-gui,admin-gui"/>
+sudo nano /var/lib/tomcat8/conf/tomcat-users.xml
+# add in         
+# <role rolename="manager-gui"/> 
+# <user username="admin" password="{TOMCAT_ADMIN_PWD}" roles="manager-gui,admin-gui"/>
 
 # Tomcat enviro vars
 # find enviro vars ps aux | grep catalina
@@ -21,7 +24,7 @@ source .profile
 sudo nano /etc/default/tomcat8 --> set heap size to 256m
 
 # get Fuseki
-wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.4.0.tar.gz
+wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.tar.gz
 # check http://apache.mirror.serversaustralia.com.au/jena/binaries/ for latest
 
 # load the Fuseki WAR into Tomcat
